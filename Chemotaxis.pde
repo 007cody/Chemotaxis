@@ -1,4 +1,4 @@
-exp[] allexp = new exp[200];
+exp[] allexp = new exp[100];
 
 void setup() {
   size(400, 400);
