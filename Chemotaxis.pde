@@ -1,18 +1,19 @@
-exp[] allexp = new exp[100];
+exp[] allexp = new exp[200];
 
 void setup() {
   size(400, 400);
   for (int i = 0; i < allexp.length; i++) {
-    allexp[i] = new exp((int)(Math.random()*500), (int)(Math.random()*500), (float)(Math.random()*2+1));
-  } 
+    allexp[i] = new exp((int)(Math.random()*500), (int)(Math.random()*500), (float)(Math.random()+1));
+  }
 }
 
 void draw() {
-  background(255);
+
+  background(0);
   for (int i = 0; i < allexp.length; i++) {
     allexp[i].move();
     allexp[i].show();
-  } 
+  }
 }
 
 class exp {
@@ -30,13 +31,13 @@ class exp {
     myY = y;
     myYspeed = s;
   }
-  
+
   void show() {
     int diam = 0;
     float g = 0;
     noFill();
     while (diam < 20) {
-      stroke(g/2, g, 0);
+      stroke(g/(int)(Math.random()*5), g+(int)(Math.random()*5), 0);
       ellipse(myX, myY, diam, diam);
       diam++;
       g+=255/20.0;
@@ -45,12 +46,13 @@ class exp {
 
   void move() {
     myY += myYspeed;
-    if(mouseX > myX){
-      myX += (int)(Math.random()*5)-1;
-    } else {
-     myX += (int)(Math.random()*5)-3; 
-    }
-    if (myY > height || mouseX == myX) 
+    if (mouseX == myX && mouseY ==myY) {
+      myX = (int)(Math.random()*400)-1;
+      myY =(int)(Math.random()*400)-1;
+    } 
+    if (myY > height || mouseX == myX)
       myY = 0;
   }
+
+
 }//end class
