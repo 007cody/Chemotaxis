@@ -46,13 +46,13 @@ class exp {
 
   void move() {
     myY += myYspeed;
-    if (mouseX == myX && mouseY ==myY) {
-      myX = (int)(Math.random()*400)-1;
-      myY =(int)(Math.random()*400)-1;
-    } 
-    if (myY > height || mouseX == myX)
+    if(mouseX > myX){
+      myX += (int)(Math.random()*5)-1;
+    } else {
+     myX += (int)(Math.random()*5)-3; 
+    }
+    if (myY > height || mouseX == myX) 
       myY = 0;
   }
-
 
 }//end class
